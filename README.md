@@ -48,4 +48,36 @@ A small hand-written test set of 11 questions:
 
 | Question | Answer | Refused |
 |---|---|---|
-| What is the
+| What is the capital of France? | I don't know based on the provided document. | Yes |
+| What was TutorialsPoint's revenue in 2023? | I don't know based on the provided document. | Yes |
+| How does the attention mechanism in transformers work? | I don't know based on the provided document. | Yes |
+
+The model knows from its training that the capital of France is Paris, but the document doesn't say it, so refusing shows the answers come from the retrieved context rather than the model's memory.
+
+## Limitations
+
+- **Small test set** (8 answerable and 3 unanswerable questions), so the scores are indicative rather than statistically strong.
+- **Strict evidence labels:** a chunk that answers in different words counts as a miss, so retrieval scores may be slightly pessimistic.
+- **Answer quality is not scored automatically:** retrieval and refusals are measured, while answer correctness was checked by reading.
+- **Simple retrieval:** a single document and plain similarity search.
+
+## Next steps
+
+- A stronger embedding model
+- Hybrid search (keyword BM25 plus embeddings) and a re-ranking model
+- A larger test set and automatic answer scoring (LLM-as-judge or RAGAS)
+
+## How to run
+
+1. Open `RAG.ipynb` in Google Colab or Kaggle.
+2. Get a free API key from [console.groq.com](https://console.groq.com/keys) and add it as a secret named `GROQ_API_KEY`, with notebook access turned on.
+3. Run all cells. The notebook picks an available Groq chat model automatically.
+
+## Tools
+
+Python, LangChain, FAISS, sentence-transformers, Groq API, pandas
+
+## Author
+
+Yehia El Salmy
+[LinkedIn](https://linkedin.com/in/yehia-el-salmy-59b5ba307) | [GitHub](https://github.com/yehiaelsalmi)
